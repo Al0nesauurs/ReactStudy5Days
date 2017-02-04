@@ -1,4 +1,7 @@
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
+const autoprefixer = require('autoprefixer');
+
 module.exports = {
 	devtool : 'eval',
 	entry :'./index.js',
@@ -9,14 +12,44 @@ module.exports = {
 	},
 
 	module: {
-		loaders:[
+		loaders:
+	 [
 		{
-			test: /\.(js|jsx)$/,
-			exclude: /node_modules/,
-			loaders: [
-			'babel-loader'
-			]
+		    test: /\.jsx?$/,
+		    exclude: /node_modules/,
+		    loaders: [
+		      'babel-loader'
+		    ]
+		},
+		  {
+		    // สำหรับไฟล์นามสกุล css ให้ใช้ Loader สองตัวคือ css-loader และ style-loader
+		    test: /\.css$/,
+		    loaders: [
+		      'style-loader',
+		      'css-loader'
+		    ]
+		}, 
+		{
+		    // ใช้ Loader สามตัวสำหรับ scss
+		    test: /\.scss$/,
+		    exclude: /node_modules/,
+		    loaders: [
+		      'style-loader',
+		      {
+		        loader: 'css-loader',
+		        query: {
+		          sourceMap: true
+		        }
+		      },
+		      {
+		        loader: 'sass-loader',
+		        query: {
+		          outputStyle: 'expanded',
+		          sourceMap: true
+		        }
+		      },
+		    ]
 		}
-	  ],
+	  ]
 	}
 };
