@@ -4,7 +4,7 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
 	devtool : 'eval',
-	entry :'./index.js',
+	entry :'./ui/index.js',
 	output : {
 		publicPath: '/static/',
 		path: path.join(__dirname, 'static'),
@@ -48,8 +48,9 @@ module.exports = {
 		          sourceMap: true
 		        }
 		      },
+
 		    ]
 		}
 	  ]
-	}
+	},
 };
