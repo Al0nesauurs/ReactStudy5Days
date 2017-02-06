@@ -9,6 +9,7 @@ export default class Header extends Component {
       <header className={styles['header']}>
         <nav>
           <Link
+            {/* ระบุ path ปลายทาง */}
             to={{ pathname: '/' }}
             className={styles['brand']}>
             Babel Coder Wiki!

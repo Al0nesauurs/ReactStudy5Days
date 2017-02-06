@@ -1,18 +1,18 @@
-// ui/components/Pages.js
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import fetch from 'isomorphic-fetch'
+import Page from './Page'
 
-class Pages extends Component {
-  state = {
-    pages: []
+export default class Pages extends Component {
+  // เมื่อ Pages รับ pages มาจาก container จึงควรเพิ่ม PropTypes
+  // เพื่อการันตีว่าสิ่งที่ส่งเข้ามานั้นต้องเป็นอาร์เรย์และมีค่าเสมอ
+  // ตรวจสอบว่า onReloadPages ต้องเป็นฟังก์ชันหรือ callback นั่นเอง
+  static propTypes = {
+    pages: PropTypes.array.isRequired,
+    onReloadPages: PropTypes.func.isRequired
   }
-
-  componentDidMount() {
-    fetch('http://127.0.0.1:5000/api/v1/pages')
-      .then((response) => response.json())
-      .then((pages) => this.setState({ pages }))
-  }
-
+  
+  // ไม่มีการดึงข้อมูลจากเซิร์ฟเวอร์อีกต่อไป
+  // รู้เพียงแค่วิธีการแสดงผล
   render() {
     return (
       <table className='table'>
@@ -25,14 +25,13 @@ class Pages extends Component {
         </thead>
         <tbody>
           {
-            this.state.pages.map((page) => (
-              <tr key={page.id}>
-                <th>{page.id}</th>
-                <td>{page.title}</td>
-                <td>
-                  <a href='javascript:void(0)'>Show</a>
-                </td>
-              </tr>
+            // ตอนนี้มันไม่รู้จัก state แล้ว
+            // รู้แค่ว่ามีคนนอกคอยส่ง props เข้ามาให้
+            this.props.pages.map((page) => (
+              <Page
+                key={page.id}
+                id={page.id}
+                title={page.title} />
             ))
           }
         </tbody>
@@ -40,5 +39,3 @@ class Pages extends Component {
     )
   }
 }
-
-export default Pages
