@@ -1,3 +1,4 @@
+// routes.js
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import {
@@ -5,11 +6,10 @@ import {
   Home,
   Pages
 } from './components'
-
 export default () => {
   return (
     <Router history={browserHistory}>
-      <Route path='/'
+      <Route path='/' 
              component={App}>
         <IndexRoute component={Home} />
         <route path='pages'
