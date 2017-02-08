@@ -1,20 +1,27 @@
-// routes.js
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import { Pages } from './containers'
+import {
+  Pages,
+  ShowPage,
+  NewPage
+} from './containers'
 import {
   App,
   Home
 } from './components'
-// routes.js
+
 export default () => {
   return (
     <Router history={browserHistory}>
-      <Route path='/' 
+      <Route path='/'
              component={App}>
         <IndexRoute component={Home} />
-        <route path='pages'
-               component={Pages} />
+        <route path='pages'>
+          <IndexRoute component={Pages} />
+          {/* สำหรับ /pages/:id */}
+          <route path=':id'
+                 component={ShowPage} />
+        </route>
       </Route>
     </Router>
   )
