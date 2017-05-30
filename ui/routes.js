@@ -13,14 +13,12 @@ import {
 export default () => {
   return (
     <Router history={browserHistory}>
-      <Route path='/'
-             component={App}>
+      <Route path='/' component={App}>
         <IndexRoute component={Home} />
         <route path='pages'>
           <IndexRoute component={Pages} />
           {/* สำหรับ /pages/:id */}
-          <route path=':id'
-                 component={ShowPage} />
+          <route path=':id' component={ShowPage} />
         </route>
       </Route>
     </Router>

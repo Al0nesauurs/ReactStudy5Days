@@ -2,13 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import fetch from 'isomorphic-fetch'
 import Page from '../Page'
 
-// เราเขียนคอมโพแนนท์ประเภทนี้เหมือนการประกาศฟังก์ชัน
-// เราจึงเรียกมันว่า functional component
-// สิ่งที่ส่งเข้ามาในฟังก์ชันคือค่า props
-// คุณจะเขียนเป็น Pages = (props) แบบนี้ก็ได้
-// แต่ผมต้องการใช้แค่ pages และ onReloadPages ไม่สนใจอย่างอื่น
-// จึงดึงสองค่านี้ออกมา ซึ่งเป็นลักษณะเดียวกับการประกาศว่า
-// const { pages, onReloadPages } = props
 const Pages = ({
   pages,
   onReloadPages
@@ -42,9 +35,7 @@ const Pages = ({
   </div>
 )
 
-// functional component ไม่ใช่คลาส
-// จึงไม่มีการนิยาม static จากภายใน
-// ต้องมาประกบร่างข้างนอกแทน
+
 Pages.propTypes = {
   pages: PropTypes.array.isRequired,
   onReloadPages: PropTypes.func.isRequired

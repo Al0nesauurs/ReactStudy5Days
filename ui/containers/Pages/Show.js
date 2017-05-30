@@ -16,10 +16,7 @@ export default class ShowPageContainer extends Component {
   }
 
   componentDidMount() {
-    // react-router จะจับคู่ URL ที่เข้ามากับ ID 
-    // แล้วส่งค่า ID เข้ามาเป็น this.props.params.id
-    // เช่น ถ้าขณะนั้น path คือ /pages/1
-    // ID ที่ส่งเข้ามาจะเป็น 1
+
     fetch(`${PAGES_ENDPOINT}/${this.props.params.id}`)
       .then((response) => response.json())
       .then((page) => this.setState({ page }))
