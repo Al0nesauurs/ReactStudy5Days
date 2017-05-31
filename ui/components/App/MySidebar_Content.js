@@ -8,6 +8,8 @@ const styles = {
   sidebar: {
     width: 256,
     height: '100%',
+    top: '50%',
+    left: '50%',
   },
   sidebarLink: {
     display: 'block',
@@ -30,12 +32,9 @@ const styles = {
 const MySidebar_Content = (props) => {
   const style = props.style ? {...styles.sidebar, ...props.style} : styles.sidebar;
 
-  const links = [];
 
-  for (let ind = 0; ind < 10; ind++) {
-    links.push(
-      <a key={ind} href="#" style={styles.sidebarLink}>Link {ind}</a>);
-  }
+
+
 
   return (
     <MaterialTitlePanel title="Menu" style={style}>

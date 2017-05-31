@@ -66,8 +66,7 @@ export default class MySidebar extends React.Component {
 
     const contentHeader = (
       <span>
-        {!this.state.docked &&
-         <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>=</a>}
+        {!this.state.docked && <a onClick={this.toggleOpen.bind(this)} href="" style={styles.contentHeaderMenuLink}>=</a>}
           <Link
             to={{ pathname: '/' }}
             className='brand' >
@@ -89,6 +88,7 @@ export default class MySidebar extends React.Component {
               </Link>
             </li>
           </span>
+          <br/>
       </span>);
 
     const sidebarProps = {
