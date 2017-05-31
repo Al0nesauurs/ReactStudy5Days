@@ -15,6 +15,7 @@ import {
   History,
   Notification,
   Settings,
+  About,
 } from './components'
 
 
@@ -54,6 +55,9 @@ export default () => {
            <route path ='settings'>
               <IndexRoute component={Settings}/>
             </route>
+           <route path ='about'>
+              <IndexRoute component={About}/>
+            </route>            
 
       </Route>
     </Router>

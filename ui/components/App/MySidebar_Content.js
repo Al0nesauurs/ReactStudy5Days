@@ -63,6 +63,13 @@ const MySidebar_Content = (props) => {
             Settings 
           </Link> 
 
+          <div style={styles.divider} />
+          <Link  to={{ pathname: '/about' }}
+            style={styles.sidebarLink}>
+            About us
+          </Link> 
+
+
       </div>
     </MaterialTitlePanel>
   );
