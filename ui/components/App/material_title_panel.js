@@ -7,7 +7,7 @@ const styles = {
     fontWeight: 300,
   },
   header: {
-    backgroundColor: 'grey',
+    backgroundColor: 'green',
     color: 'white',
     padding: '16px',
     fontSize: '1.5em',

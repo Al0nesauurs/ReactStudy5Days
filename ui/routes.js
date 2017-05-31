@@ -22,8 +22,7 @@ import {
 export default () => {
   return (
     <Router history={browserHistory}>
-      <Route path='/'
-          component={App}>
+      <Route path='/' component={App}>
             <IndexRoute component={Home} />
             <route path='pages'>
               <IndexRoute component={Pages} />
