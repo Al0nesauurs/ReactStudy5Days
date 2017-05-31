@@ -95,6 +95,16 @@ $border-style: 1px solid #cbcbcb;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    blackground: black;
+    background-color: #e0e0e0;
+  },
+  .sidebar {
+    zIndex: 2;
+    position: 'absolute';
+    top: 0;
+    bottom: 0;
+    transition: 'transform .3s ease-out';
+    WebkitTransition: '-webkit-transform .3s ease-out';
+    willChange: 'transform';
+    overflowY: 'auto';
   }
 }

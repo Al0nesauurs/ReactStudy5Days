@@ -1,5 +1,6 @@
 // Home.js
 import React, { Component } from 'react'
+import Img from 'react-image'
 
 class Home extends Component {
 
@@ -18,8 +19,10 @@ initMap() {
     return (
       <h2 className='title'>
         Welcome to APPPI HOME WORK
-        <h3>My Google Maps Demo</h3>
+        My Google Maps Demo
     	<div id="map"></div>
+     <div><img src={'logo.jpg'} alt="MyPic" /><span> {this.props.name}</span></div>
+
     	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv0WB-Y40HFrMBLuBSw1GdJqsDSbxCYxY&callback=initMap">
     initMap();
     </script>
