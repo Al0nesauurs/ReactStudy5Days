@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Advertise from '../Advertise'
+//import iconMarker from '../logo2.png';
 
 export default class History extends Component {
     render(){

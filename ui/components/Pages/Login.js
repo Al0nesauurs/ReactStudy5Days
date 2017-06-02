@@ -1,39 +1,28 @@
-import React, {Component} from 'react'
-
+import React, {Component,PropTypes} from 'react'
+import { connect } from 'react-redux';
+import { thelogin } from '../../actions/actionCreator';
+import { createStore } from 'redux'
+let store = createStore(thelogin, [ 'Use Redux' ])
 
 export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username : "",
-      password: ""
-    };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
+    static PropTypes={
+      username: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired
+    }
 
   render() {
+    const dispatch = this.props.dispatch;
+
+    const { username,password}=this.props;
     return (
       <h2 className="title">
         <form action="/action_page.php">
-        Username : <input type="text" name="User" value={this.state.value} onChange={this.handleChange} /><br />
-        Password : <input type="text" name="Pass" value={this.state.value} onChange={this.handleChange} /> <br />
-        <input type="submit" value="Submit" />
+        Username : <input type="text" name="User" value={this.props.value} onChange={this.handleInputChange} /><br />
+        Password : <input type="text" name="Pass" value={this.props.value} onChange={this.handleInputChange} /> <br />
+        <input type="button" value="Submit" onClick={thelogin.bind(this, username, password)}/>
+
         </form>
       </h2>
     )
