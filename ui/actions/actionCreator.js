@@ -3,10 +3,9 @@ import * as errorMessages  from '../constants/MessageConstants';
 
 
 
-export function thelogin(username, password) {
-    alert("outsied username = "+username+" password = "+password);
+export function thelogin() {
+    alert("outsied username = ");
   return{
-
     type:"LOGIN",
     username:username,
     password:password

@@ -1,17 +1,26 @@
 import React, {Component,PropTypes} from 'react'
 import { connect } from 'react-redux';
 import { thelogin } from '../../actions/actionCreator';
-import { createStore } from 'redux'
+import { createStore} from 'redux'
+import combineReducers from '../../reducers'
+
+
+const store =createStore(combineReducers);
+
+store.subscribe(()=>{
+  console.log("store changed",store.getState())
+})
 
 export default class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password:''
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-
-    constructor(props) {
-      super(props);
-      this.state = {username: '',password:''};
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
     handleChange(event) {
       if(event.target.name=="User")
@@ -20,26 +29,32 @@ export default class Login extends Component {
         this.setState({password:event.target.value})
     }
 
-    handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
-    }
+
 
   render() {
 
-    const dispatch = this.props.dispatch;
+  
 
-    const { username,password}=this.props;
     return (
       <h2 className="title">
         <form action="/action_page.php">
         Username : <input type="text" name="User" value={this.state.value} onChange={this.handleChange} /><br />
         Password : <input type="text" name="Pass" value={this.state.value} onChange={this.handleChange} /> <br />
-        <input type="button" value="Submit" onClick={thelogin.bind(this, this.state.username, this.state.password)}/>
-
+        <input type="button" value="Submit" 
+        onClick={()=>{
+          store.dispatch(
+            {
+              type:"LOGIN",payload:1,
+              yaname:this.state.username,
+              yapass:this.state.password
+          })
+          
+          }}/>
         </form>
       </h2>
     )
   }
 }
+
+
 

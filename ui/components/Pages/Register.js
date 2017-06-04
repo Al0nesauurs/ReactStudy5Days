@@ -1,41 +1,61 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux';
+import { thelogin } from '../../actions/actionCreator';
+import { createStore} from 'redux'
+import combineReducers from '../../reducers'
 
+
+const store =createStore(combineReducers);
+
+store.subscribe(()=>{
+  console.log("store changed",store.getState())
+})
 
 export default class Register extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      username : "",
-      password: ""
+      username: '',
+      password:'',
+      repassword:'',
+      email:'',
     };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
 
-    this.setState({
-      [name]: value
-    });
-  }
+    handleChange(event) {
+      if(event.target.name=="User")
+        this.setState({username: event.target.value});
+      else if(event.target.name=="Pass")
+        this.setState({password:event.target.value})
+      else if(event.target.name=="RePass")
+        this.setState({repassword:event.target.value})
+      else if(event.target.name=="Email")
+        this.setState({email:event.target.value})
+    }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
 
   render() {
     return (
       <h2 className="title">
         <form action="/action_page.php">
-        Username : <input type="text" name="User" value={this.state.value} onChange={this.handleChange} /><br />
-        Password : <input type="text" name="Pass" value={this.state.value} onChange={this.handleChange} /> <br />
-        Re-Password : <input type="text" value={this.state.value} onChange={this.handleChange} /><br />
-        <input type="submit" value="Submit" />
+        Username :    <input type="text" name="User"    value={this.state.value} onChange={this.handleChange} /><br />
+        Password :    <input type="text" name="Pass"    value={this.state.value} onChange={this.handleChange} /> <br />
+        Re-Password : <input type="text" name="RePass"  value={this.state.value} onChange={this.handleChange} /><br />
+        Email :       <input type="text" name="Email"   value={this.state.value} onChange={this.handleChange} /><br />
+        <input type="button" value="Submit"         
+        onClick={()=>{
+          store.dispatch(
+            {
+              type:"REGISTER",
+              yaname:this.state.username,
+              yapass:this.state.password,
+              yarepass:this.state.repassword,
+              yaemail:this.state.email
+          })
+          
+          }}/>
         </form>
       </h2>
     )
