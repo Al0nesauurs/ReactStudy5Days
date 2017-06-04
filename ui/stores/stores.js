@@ -1,15 +1,11 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import reducer from '../reducers'
-import Login from '../components/Pages/Login'
+import {createStore, combineReducers, applyMiddleware} from "redux";
+import logger from "redux-logger";
 
-let store = createStore(reducer)
+import user from "../reducers/userReducer";
 
-render(
-  <Provider store={store}>
-    <Login />
-  </Provider>,
-  document.getElementById('root')
-)
+export default createStore(
+    combineReducers({
+        user
+    }),
+
+);

@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux';
-import { thelogin } from '../../actions/actionCreator';
 import { createStore} from 'redux'
 import combineReducers from '../../reducers'
 

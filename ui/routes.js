@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-
+import{LoginWeb}from './containers'
 import {
   App,
   Home,
@@ -24,7 +24,7 @@ export default () => {
 
 
             <route path ='login'>
-              <IndexRoute component={Login}/>
+              <IndexRoute component={LoginWeb}/>
             </route>
 
            <route path ='register'>
