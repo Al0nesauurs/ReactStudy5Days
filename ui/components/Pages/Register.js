@@ -5,13 +5,6 @@ import { createStore} from 'redux'
 import combineReducers from '../../reducers'
 
 
-
-export const myvalue={
-    myname:'',
-    mypass:'',
-    myrepass:'',
-    myemail:''
-}
 export class Register  extends Component {
   constructor(props) {
     super(props);
@@ -27,17 +20,37 @@ export class Register  extends Component {
 
     handleChange(event) {
       if(event.target.name=="User"){
-         myvalue.myname=event.target.value;
+        this.props.theregis(
+          event.target.value, 
+          this.props.user.password,
+          this.props.user.repassword,
+          this.props.user.email
+          )
     }
       else if(event.target.name=="Pass"){
-        myvalue.mypass=event.target.value;
-      }
+        this.props.theregis(
+          this.props.user.username, 
+          this.props.user.password,
+          this.props.user.repassword,
+          this.props.user.email
+          )      
+        }
       else if(event.target.name=="REPass"){
-        myvalue.myrepass=event.target.value;
-      }
+        this.props.theregis(
+          this.props.user.username, 
+          this.props.user.password,
+          event.target.value, 
+          this.props.user.email
+          )      
+        }
       else if(event.target.name=="Email"){
-        myvalue.myemail=event.target.value;
-      }
+        this.props.theregis(
+          this.props.user.username, 
+          this.props.user.password,
+          this.props.user.repassword,
+          event.target.value, 
+          )      
+        }
     }
     
   
@@ -46,10 +59,10 @@ export class Register  extends Component {
         <div>
             <div className="title">
                 <div className="content">
-                 Username :   <input type="text"   name="User"   value={this.state.value} onChange={this.handleChange}  /><br />
-                 Password :   <input type="password"   name="Pass"   value={this.state.value} onChange={this.handleChange} /> <br />
-                 Repassword : <input type="password"   name="REPass" value={this.state.value} onChange={this.handleChange}  /><br />
-                 Email :      <input type="text"   name="Email"  value={this.state.value} onChange={this.handleChange} /> <br />
+                 Username :   <input type="text"        name="User"   value={this.state.value} onChange={this.handleChange}  /><br />
+                 Password :   <input type="password"    name="Pass"   value={this.state.value} onChange={this.handleChange} /> <br />
+                 Repassword : <input type="password"    name="REPass" value={this.state.value} onChange={this.handleChange}  /><br />
+                 Email :      <input type="text"        name="Email"  value={this.state.value} onChange={this.handleChange} /> <br />
                     <button className="btn btnprimary"
                         onClick={() => this.props.RegUsername()}>Register!
                     </button>

@@ -17,20 +17,14 @@ class RegWeb extends React.Component {
     render() {
         return (
             <div className="container">
-                <Register RegUsername=
-                {() => this.props.theregis(
-                        myvalue.myname,
-                        myvalue.mypass,
-                        myvalue.myrepass,
-                        myvalue.myemail
-                    )}/>
+                <Register 
+                   {...this.props} />
                 <REUser 
-                username={this.props.user.username}  
-                password={this.props.user.password}
-                repassword={this.props.user.repassword}
-                email={this.props.user.email}
-                
-                />
+                    username={this.props.user.username} 
+                    password={this.props.user.password}
+                    repassword={this.props.user.repassword}
+                    email={this.props.user.email}
+                    />
             </div>
         );
     }
