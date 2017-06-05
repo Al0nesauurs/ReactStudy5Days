@@ -6,9 +6,12 @@ export function thelogin(username,password) {
     };
 }
 
-export function setAge(age) {
+export function theregis(username,password,repassword,email) {
     return {
-        type: "SET_AGE",
-        payload: age
+        type: "REGIS",
+        Upayload: username,
+        Ppayload: password,
+        RPpayload:repassword,
+        Epayload:email
     };
 }

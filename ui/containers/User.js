@@ -3,15 +3,15 @@ import React from "react";
 export const User = (props) => {
     return (
         <div>
-            <div className="row">
-                <div className="col-xs-12">
-                    <h1>The User Page</h1>
+            <div className="content">
+                <div className="content">
+                    <h1>The Login Page</h1>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-xs-12">
-                    <p>UserName: {props.username} <br/> 
-                       Password: {props.password}</p>
+            <div className="content">
+                <div className="content">
+                    <p>My-username: {props.username} <br/>
+                       My-password: {props.password} <br/></p>
                 </div>
             </div>
         </div>

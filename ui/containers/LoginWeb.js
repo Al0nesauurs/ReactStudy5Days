@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
-import {Login} from '../components/Pages/Login';
+import {NaLogin,myvalue} from '../components/Pages/Login';
 import * as counterActions from '../actions/actionCreator';
 import { connect } from 'react-redux';
 import { createStore } from 'redux'
@@ -11,12 +11,14 @@ import {thelogin} from '../actions/actionCreator'
 //   state: state.counter
 // }))
 
+
 class LoginWeb extends React.Component {
+
     render() {
         return (
             <div className="container">
-                <Login changeUsername={() => this.props.thelogin("HELLO","ITSME")}/>
-                <User username={this.props.user.username} password={this.props.user.password}/>
+                <NaLogin changeUsername={() => this.props.thelogin(myvalue.myname,myvalue.mypass)}/>
+                <User username={this.props.user.username}  password={this.props.user.password}/>
             </div>
         );
     }

@@ -1,6 +1,8 @@
 const userReducer = (state = {
     username: "",
-    password: "" 
+    password: "" ,
+    repassword:"",
+    email:""
 }, action) => {
     switch (action.type) {
         case "LOGIN":
@@ -10,10 +12,13 @@ const userReducer = (state = {
                 password: action.Ppayload
             };
             break;
-        case "SET_AGE":
+        case "REGIS":
             state = {
                 ...state,
-                age: action.payload
+                username: action.username,
+                password: action.password,
+                repassword:action.repassword,
+                email:action.email
             };
             break;
     }

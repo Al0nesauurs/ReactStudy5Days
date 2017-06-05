@@ -46,11 +46,11 @@ export default class Register extends Component {
         onClick={()=>{
           store.dispatch(
             {
-              type:"REGISTER",
-              yaname:this.state.username,
-              yapass:this.state.password,
-              yarepass:this.state.repassword,
-              yaemail:this.state.email
+              type:"REGIS",
+              username:this.state.username,
+              password:this.state.password,
+              repassword:this.state.repassword,
+              email:this.state.email
           })
           
           }}/>

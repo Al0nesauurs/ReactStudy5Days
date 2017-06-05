@@ -17,7 +17,9 @@ export default class App extends Component {
   render() {
     return (
     <div>
+      <MySidebar/>
            <Provider store={store}>
+              
            <div className="container">
            <div className="content">
               {this.props.children}
