@@ -20,7 +20,7 @@ export default class App extends Component {
            <Provider store={store}>
               
            <div className="container">
-           <div className="content">
+           <div className="container">
               {this.props.children}
            </div>
            </div>

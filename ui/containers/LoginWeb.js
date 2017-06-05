@@ -17,12 +17,11 @@ class LoginWeb extends React.Component {
     render() {
         return (
             <div className="container">
-                <NaLogin changeUsername=
-                {() => this.props.thelogin(
-                        myvalue.myname,
-                        myvalue.mypass
-                    )}/>
-                <User username={this.props.user.username}  password={this.props.user.password}/>
+                <NaLogin 
+                   {...this.props} />
+                <User 
+                    username={this.props.user.username} 
+                    password={this.props.user.password}/>
             </div>
         );
     }

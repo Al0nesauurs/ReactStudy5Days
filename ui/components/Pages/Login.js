@@ -4,12 +4,6 @@ import { thelogin } from '../../actions/actionCreator';
 import { createStore} from 'redux'
 import combineReducers from '../../reducers'
 
-
-
-export const myvalue={
-    myname:'',
-    mypass:''
-}
 export class NaLogin  extends Component {
   constructor(props) {
     super(props);
@@ -22,13 +16,12 @@ export class NaLogin  extends Component {
 
 
     handleChange(event) {
+      
       if(event.target.name=="User"){
-        this.setState({username: event.target.value});
-        myvalue.myname=event.target.value;
+        this.props.thelogin(event.target.value, this.props.user.password)
     }
       else if(event.target.name=="Pass"){
-        this.setState({password:event.target.value})
-        myvalue.mypass=event.target.value;
+        this.props.thelogin(this.props.user.username, event.target.value)
       }
     }
     

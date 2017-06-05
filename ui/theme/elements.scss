@@ -100,6 +100,7 @@ $border-style: 1px solid #cbcbcb;
     background-color: #e0e0e0;
   }
   .sidebar {
+    position: absolute;
     zIndex: 2;
     top: 0;
     bottom: 0;
