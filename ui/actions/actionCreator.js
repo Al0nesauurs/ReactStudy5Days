@@ -1,4 +1,5 @@
 export function thelogin(username,password) {
+
     return {
         type: "LOGIN",
         Upayload: username,
@@ -7,6 +8,7 @@ export function thelogin(username,password) {
 }
 
 export function theregis(username,password,repassword,email) {
+
     return {
         type: "REGIS",
         Upayload: username,

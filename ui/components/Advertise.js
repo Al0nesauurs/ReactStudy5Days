@@ -1,7 +1,6 @@
 // Home.js
 import React, { Component } from 'react'
 import Img from 'react-image'
-import GMap from './App/GMap'
 
 export default class Advertise extends Component {
 

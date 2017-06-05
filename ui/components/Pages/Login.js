@@ -5,40 +5,6 @@ import { createStore} from 'redux'
 import combineReducers from '../../reducers'
 
 
-/*class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password:''
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-
-    handleChange(event) {
-      if(event.target.name=="User")
-        this.setState({username: event.target.value});
-      else if(event.target.name=="Pass")
-        this.setState({password:event.target.value})
-    }
-
-
-
-  render() {
-
-     return (
-      <h2 className="title">
-        <form action="/action_page.php">
-        Username : <input type="text" name="User" value={this.state.value} onChange={this.handleChange} /><br />
-        Password : <input type="text" name="Pass" value={this.state.value} onChange={this.handleChange} /> <br />
-        </form>
-      </h2>
-    )
-  }*/
-  
-
-
 
 export const myvalue={
     myname:'',

@@ -15,10 +15,10 @@ const userReducer = (state = {
         case "REGIS":
             state = {
                 ...state,
-                username: action.username,
-                password: action.password,
-                repassword:action.repassword,
-                email:action.email
+                username: action.Upayload,
+                password: action.Ppayload,
+                repassword:action.RPpayload,
+                email:action.Epayload
             };
             break;
     }
