@@ -22,12 +22,30 @@ export class Register  extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
  senddata(){
-    const rootRef = firebase.database().ref("/AllUser/"+this.props.user.username).set({
-     username: this.props.user.username,
-     password:this.props.user.password,
-     repassword:this.props.user.repassword,
-     email:this.props.user.email
-  })
+    var ref = firebase.database().ref();
+    var mauser = this.props.user.username;
+    var mapass= this.props.user.password;
+    var marepass= this.props.user.repassword;
+    var maemail= this.props.user.email;
+    var canReg;
+    ref.once("value")
+      .then(function(snapshot) {
+        var chkuser = snapshot.child("AllUser").child(mauser).child("username").val();
+        if(chkuser==mauser)
+        {
+          alert("USERNAME EXIST");
+          canReg=false;
+        }
+        else{
+          const rootRef = firebase.database().ref("/AllUser/"+mauser).set({
+            username: mauser,
+            password:mapass,
+            repassword:marepass,
+            email:maemail
+          })
+           alert("REGISTER DONE!")
+        }
+      });
 }
 
 
