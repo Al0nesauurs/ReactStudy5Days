@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { thelogin } from '../../actions/actionCreator';
 import { createStore} from 'redux'
 import combineReducers from '../../reducers'
+import * as firebase from 'firebase';
+
 
 export class NaLogin  extends Component {
   constructor(props) {
@@ -14,7 +16,20 @@ export class NaLogin  extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-
+ matchdata(){
+    var ref = firebase.database().ref();
+    var mauser = this.props.user.username;
+    var mapass = this.props.user.password;
+    ref.once("value")
+      .then(function(snapshot) {
+        var chkuser = snapshot.child("AllUser").child(mauser).child("username").val(); 
+        var chkpass = snapshot.child("AllUser").child(mauser).child("password").val(); 
+        if(mauser==chkuser&&mapass==chkpass)
+            alert("CAN LOGIN");
+        else
+            alert("Wroung User or Password");
+    });
+}
     handleChange(event) {
       
       if(event.target.name=="User"){
@@ -31,10 +46,10 @@ export class NaLogin  extends Component {
         <div>
             <div className="title">
                 <div className="content">
-                 Username : <input type="text" name="User" value={this.state.value} onChange={this.handleChange}  /><br />
-                 Password : <input type="text" name="Pass" value={this.state.value} onChange={this.handleChange} /> <br />
+                 Username : <input type="text" name="User" onChange={this.handleChange}  /><br />
+                 Password : <input type="text" name="Pass" onChange={this.handleChange} /> <br />
                     <button className="btn btnprimary"
-                        onClick={() => this.props.changeUsername()}>Change the Username
+                         onClick={() => this.matchdata()}>Login
                     </button>
                 </div>
             </div>

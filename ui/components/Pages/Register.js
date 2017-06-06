@@ -5,6 +5,11 @@ import { createStore} from 'redux'
 import combineReducers from '../../reducers'
 
 
+import * as firebase from 'firebase';
+
+
+
+
 export class Register  extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +21,14 @@ export class Register  extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+ senddata(){
+    const rootRef = firebase.database().ref("/AllUser/"+this.props.user.username).set({
+     username: this.props.user.username,
+     password:this.props.user.password,
+     repassword:this.props.user.repassword,
+     email:this.props.user.email
+  })
+}
 
 
     handleChange(event) {
@@ -30,7 +43,7 @@ export class Register  extends Component {
       else if(event.target.name=="Pass"){
         this.props.theregis(
           this.props.user.username, 
-          this.props.user.password,
+          event.target.value,
           this.props.user.repassword,
           this.props.user.email
           )      
@@ -59,12 +72,12 @@ export class Register  extends Component {
         <div>
             <div className="title">
                 <div className="content">
-                 Username :   <input type="text"        name="User"   value={this.state.value} onChange={this.handleChange}  /><br />
-                 Password :   <input type="password"    name="Pass"   value={this.state.value} onChange={this.handleChange} /> <br />
-                 Repassword : <input type="password"    name="REPass" value={this.state.value} onChange={this.handleChange}  /><br />
-                 Email :      <input type="text"        name="Email"  value={this.state.value} onChange={this.handleChange} /> <br />
+                 Username :   <input type="text"        name="User"    onChange={this.handleChange}  /><br />
+                 Password :   <input type="password"    name="Pass"    onChange={this.handleChange} /> <br />
+                 Repassword : <input type="password"    name="REPass"  onChange={this.handleChange}  /><br />
+                 Email :      <input type="text"        name="Email"   onChange={this.handleChange} /> <br />
                     <button className="btn btnprimary"
-                        onClick={() => this.props.RegUsername()}>Register!
+                        onClick={() => this.senddata()}>Register!
                     </button>
                 </div>
             </div>
@@ -74,3 +87,4 @@ export class Register  extends Component {
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
